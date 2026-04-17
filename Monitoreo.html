@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="VetSense — Panel de Monitoreo BLE en tiempo real para seguimiento de signos vitales en ganadería." />
+    <title>Panel de Monitoreo — VetSense</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet" />
+</head>
+
+<body class="mon-page">
+
+    <!-- ══════════════════════════════════════════════
+       NAV  (mismo header que index.html)
+  ══════════════════════════════════════════════ -->
+    <header class="site-header" role="banner">
+        <nav class="nav container" aria-label="Navegación principal">
+            <a href="index.html" class="nav__logo" aria-label="VetSense inicio">
+                <span class="nav__logo-icon" aria-hidden="true">⬡</span>
+                <span class="nav__logo-text">NodoVet<em>Sense</em></span>
+            </a>
+            <ul class="nav__links" role="list">
+                <li><a href="index.html#problema" class="nav__link">Problema</a></li>
+                <li><a href="index.html#sistema" class="nav__link">Sistema</a></li>
+                <li><a href="index.html#tecnologia" class="nav__link">Tecnología</a></li>
+                <li><a href="index.html#resultados" class="nav__link">Resultados</a></li>
+            </ul>
+            <a href="monitoreo.html" class="btn btn--primary nav__cta" aria-current="page">
+                <span class="btn__dot" aria-hidden="true"></span>
+                Panel de Monitoreo
+            </a>
+        </nav>
+    </header>
+
+    <!-- ══════════════════════════════════════════════
+       PANEL PRINCIPAL
+  ══════════════════════════════════════════════ -->
+    <main class="mon-main">
+        <div class="mon-container">
+
+            <!-- Sub-header del panel -->
+            <div class="mon-header">
+                <div>
+                    <div class="section__label">Monitoreo en vivo</div>
+                    <h1 class="mon-title">Panel <em>BLE</em></h1>
+                </div>
+                <div class="ble-badge" id="bleBadge">
+                    <div class="ble-dot"></div>
+                    <span id="bleStatus">Desconectado</span>
+                </div>
+            </div>
+
+            <!-- Botón conectar -->
+            <button class="btn-connect" id="btnConnect" onclick="toggleBLE()">
+                ⚡ Conectar por Bluetooth
+            </button>
+
+            <!-- Selector de animal -->
+            <div class="section__label">Seleccionar animal</div>
+            <div class="animal-grid" id="animalGrid"></div>
+
+            <!-- Panel de datos -->
+            <div class="data-panel">
+                <div class="data-panel-header">
+                    <div class="data-panel-title">
+                        <span class="heartbeat" id="heartIcon">❤️</span> Datos en vivo
+                    </div>
+                    <div class="data-ts" id="dataTimestamp">—</div>
+                </div>
+
+                <div class="bpm-display">
+                    <div class="bpm-value" id="bpmVal">—</div>
+                    <div class="bpm-unit">lat / min</div>
+                    <div><span class="bpm-status waiting" id="bpmStatus">Sin datos</span></div>
+                </div>
+
+                <div class="metrics-grid">
+                    <div class="metric">
+                        <div class="metric-label">Temp. Sujeto</div>
+                        <div class="metric-value" id="mTempS">—</div>
+                        <div class="metric-unit">°C</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-label">Temp. Ambiente</div>
+                        <div class="metric-value" id="mTempA">—</div>
+                        <div class="metric-unit">°C</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-label">Humedad</div>
+                        <div class="metric-value" id="mHum">—</div>
+                        <div class="metric-unit">%</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-label">Sensación Térmica</div>
+                        <div class="metric-value" id="mSens">—</div>
+                        <div class="metric-unit">°C</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-label">Paquete #</div>
+                        <div class="metric-value" id="mPkt">—</div>
+                        <div class="metric-unit"> </div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-label">Animal</div>
+                        <div class="metric-value metric-value--sm" id="mAnimal">—</div>
+                        <div class="metric-unit"> </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Log BLE -->
+            <details class="log-panel">
+                <summary>▸ LOG BLE</summary>
+                <div class="log-content" id="logContent"></div>
+            </details>
+
+        </div>
+    </main>
+
+    <div id="toast"></div>
+
+    <script>
+        const ANIMALES = [
+            { idx: 0, nombre: 'Perro_Grande', icon: '🐕', bpmMin: 60, bpmMax: 130, label: 'Perro Grande' },
+            { idx: 1, nombre: 'Perro_Pequeno', icon: '🐩', bpmMin: 100, bpmMax: 180, label: 'Perro Pequeño' },
+            { idx: 2, nombre: 'Borrego', icon: '🐑', bpmMin: 60, bpmMax: 120, label: 'Borrego/Oveja' },
+            { idx: 3, nombre: 'Vaca', icon: '🐄', bpmMin: 40, bpmMax: 80, label: 'Vaca/Bovino' },
+        ];
+
+        const SERVICE_UUID = '12345678-1234-1234-1234-123456789abc';
+        const CHAR_CONFIG = '12345678-1234-1234-1234-123456789ab1';
+        const CHAR_STATUS = '12345678-1234-1234-1234-123456789ab2';
+
+        let device = null;
+        let configChar = null;
+        let statusChar = null;
+        let selectedIdx = 0;
+        let connected = false;
+
+        // ─── Render grid ───────────────────────────────────────
+        const grid = document.getElementById('animalGrid');
+        ANIMALES.forEach(a => {
+            const card = document.createElement('div');
+            card.className = 'animal-card' + (a.idx === 0 ? ' selected' : '');
+            card.dataset.idx = a.idx;
+            card.innerHTML = `
+    <div class="sending-ring"></div>
+    <div class="animal-icon">${a.icon}</div>
+    <div class="animal-name">${a.label}</div>
+    <div class="animal-bpm">${a.bpmMin}–${a.bpmMax} BPM</div>
+  `;
+            card.addEventListener('click', () => seleccionarAnimal(a.idx));
+            grid.appendChild(card);
+        });
+
+        // ─── Seleccionar animal → envía config automático ──────
+        async function seleccionarAnimal(idx) {
+            selectedIdx = idx;
+            document.querySelectorAll('.animal-card').forEach(c => {
+                c.classList.toggle('selected', parseInt(c.dataset.idx) === idx);
+                c.classList.remove('sending');
+            });
+
+            if (!connected || !configChar) return;
+
+            const card = document.querySelector(`.animal-card[data-idx="${idx}"]`);
+            card.classList.add('sending');
+
+            try {
+                const msg = 'ANIMAL:' + idx;
+                await configChar.writeValue(new TextEncoder().encode(msg));
+                log('✓ Config enviada: ' + ANIMALES[idx].label, 'ok');
+                toast('✓ ' + ANIMALES[idx].label + ' configurado', 'ok');
+            } catch (err) {
+                log('Error al enviar config: ' + err.message, 'err');
+                toast('Error: ' + err.message, 'err');
+            } finally {
+                card.classList.remove('sending');
+            }
+        }
+
+        // ─── BLE ───────────────────────────────────────────────
+        async function toggleBLE() {
+            connected ? desconectar() : await conectar();
+        }
+
+        async function conectar() {
+            if (!navigator.bluetooth) {
+                toast('⚠️ Usa Chrome en Android', 'err');
+                return;
+            }
+            try {
+                log('Buscando NodoMedico_01...');
+                device = await navigator.bluetooth.requestDevice({
+                    filters: [{ services: [SERVICE_UUID] }],
+                    optionalServices: [SERVICE_UUID]
+                });
+                device.addEventListener('gattserverdisconnected', onDesconectado);
+
+                const server = await device.gatt.connect();
+                const service = await server.getPrimaryService(SERVICE_UUID);
+
+                configChar = await service.getCharacteristic(CHAR_CONFIG);
+                statusChar = await service.getCharacteristic(CHAR_STATUS);
+
+                await statusChar.startNotifications();
+                statusChar.addEventListener('characteristicvaluechanged', onDatosRecibidos);
+
+                setConectado(true);
+                log('✓ Conectado a ' + device.name, 'ok');
+                toast('✓ Conectado', 'ok');
+
+                await seleccionarAnimal(selectedIdx);
+
+            } catch (err) {
+                log('Error BLE: ' + err.message, 'err');
+                toast('Error: ' + err.message, 'err');
+            }
+        }
+
+        function desconectar() {
+            if (device?.gatt.connected) device.gatt.disconnect();
+            setConectado(false);
+            toast('Desconectado', '');
+        }
+
+        function onDesconectado() {
+            setConectado(false);
+            log('Dispositivo desconectado', 'err');
+            toast('BLE desconectado', 'err');
+        }
+
+        function setConectado(val) {
+            connected = val;
+            const badge = document.getElementById('bleBadge');
+            badge.className = 'ble-badge' + (val ? ' connected' : '');
+            document.getElementById('bleStatus').textContent = val ? (device?.name || 'Conectado') : 'Desconectado';
+            const btn = document.getElementById('btnConnect');
+            btn.textContent = val ? '✕ Desconectar' : '⚡ Conectar por Bluetooth';
+            btn.className = 'btn-connect' + (val ? ' connected' : '');
+        }
+
+        // ─── Datos recibidos ───────────────────────────────────
+        function onDatosRecibidos(event) {
+            const raw = new TextDecoder().decode(event.target.value);
+            log('RX: ' + raw, 'ok');
+
+            try {
+                const partes = {};
+                raw.split('|').forEach(par => {
+                    const sep = par.indexOf(':');
+                    if (sep > -1) partes[par.substring(0, sep).trim()] = par.substring(sep + 1).trim();
+                });
+
+                const bpm = parseInt(partes['Frecuencia_Cardiaca'] || '0');
+                const tempS = parseFloat(partes['Temperatura_Sujeto'] || '0');
+                const tempA = parseFloat(partes['Temperatura_Ambiente'] || '0');
+                const hum = parseFloat(partes['Humedad'] || '0');
+                const sens = parseFloat(partes['Sensacion_Termica'] || '0');
+                const pkt = partes['Paquete'] || '—';
+                const animal = partes['Animal'] || '—';
+
+                document.getElementById('bpmVal').textContent = bpm > 0 ? bpm : '—';
+                document.getElementById('mTempS').textContent = tempS.toFixed(1);
+                document.getElementById('mTempA').textContent = tempA.toFixed(1);
+                document.getElementById('mHum').textContent = hum.toFixed(0);
+                document.getElementById('mSens').textContent = sens.toFixed(1);
+                document.getElementById('mPkt').textContent = pkt;
+                document.getElementById('mAnimal').textContent = animal.replace(/_/g, ' ');
+
+                const cfg = ANIMALES[selectedIdx];
+                const statusEl = document.getElementById('bpmStatus');
+                if (bpm === 0) {
+                    statusEl.className = 'bpm-status waiting';
+                    statusEl.textContent = 'Sin lectura';
+                } else if (bpm >= cfg.bpmMin && bpm <= cfg.bpmMax) {
+                    statusEl.className = 'bpm-status normal';
+                    statusEl.textContent = '✓ Normal';
+                } else {
+                    statusEl.className = 'bpm-status alerta';
+                    statusEl.textContent = '⚠ Fuera de rango';
+                }
+
+                const now = new Date();
+                document.getElementById('dataTimestamp').textContent =
+                    now.getHours().toString().padStart(2, '0') + ':' +
+                    now.getMinutes().toString().padStart(2, '0') + ':' +
+                    now.getSeconds().toString().padStart(2, '0');
+
+                const icon = document.getElementById('heartIcon');
+                icon.classList.remove('beat');
+                void icon.offsetWidth;
+                icon.classList.add('beat');
+                setTimeout(() => icon.classList.remove('beat'), 700);
+
+            } catch (e) {
+                log('Error parseando: ' + e.message, 'err');
+            }
+        }
+
+        // ─── Utilidades ────────────────────────────────────────
+        function log(msg, type) {
+            const c = document.getElementById('logContent');
+            const d = document.createElement('div');
+            d.className = 'log-line' + (type ? ' ' + type : '');
+            const ts = new Date();
+            d.textContent = '[' + ts.getHours().toString().padStart(2, '0') + ':' +
+                ts.getMinutes().toString().padStart(2, '0') + ':' +
+                ts.getSeconds().toString().padStart(2, '0') + '] ' + msg;
+            c.prepend(d);
+            while (c.children.length > 50) c.removeChild(c.lastChild);
+        }
+
+        let toastTimer;
+        function toast(msg, type) {
+            const t = document.getElementById('toast');
+            t.textContent = msg;
+            t.className = 'show' + (type ? ' ' + type : '');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => { t.className = ''; }, 2800);
+        }
+
+        // ─── Nav scroll effect (misma lógica que index) ────────
+        const header = document.querySelector('.site-header');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 20);
+        }, { passive: true });
+    </script>
+</body>
+
+</html>

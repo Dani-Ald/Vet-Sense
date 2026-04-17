@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="VetSense — Sistema de Monitoreo IoT para Ganadería de Recuperación Osteodérmica. Detección temprana de complicaciones post-quirúrgicas en ganado de alto valor genético." />
+    <title>VetSense — Monitoreo IoT Veterinario</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap"
+        rel="stylesheet" />
+</head>
+
+<body>
+
+    <!-- ══════════════════════════════════════════════
+       NAV
+  ══════════════════════════════════════════════ -->
+    <header class="site-header" role="banner">
+        <nav class="nav container" aria-label="Navegación principal">
+            <a href="index.html" class="nav__logo" aria-label="VetSense inicio">
+                <span class="nav__logo-icon" aria-hidden="true">⬡</span>
+                <span class="nav__logo-text">NodoVet<em>Sense</em></span>
+            </a>
+            <ul class="nav__links" role="list">
+                <li><a href="#problema" class="nav__link">Problema</a></li>
+                <li><a href="#sistema" class="nav__link">Sistema</a></li>
+                <li><a href="#tecnologia" class="nav__link">Tecnología</a></li>
+                <li><a href="#resultados" class="nav__link">Resultados</a></li>
+            </ul>
+            <a href="monitoreo.html" class="btn btn--primary nav__cta" aria-label="Ir al panel de monitoreo en vivo">
+                <span class="btn__dot" aria-hidden="true"></span>
+                Panel de Monitoreo
+            </a>
+
+        </nav>
+
+    </header>
+
+    <main>
+
+        <!-- ══════════════════════════════════════════════
+         HERO
+    ══════════════════════════════════════════════ -->
+        <section class="hero" aria-labelledby="hero-heading">
+            <div class="hero__bg-grid" aria-hidden="true"></div>
+            <div class="hero__glow" aria-hidden="true"></div>
+
+            <div class="container hero__inner">
+                <div class="hero__badge" role="note">
+                    <span class="badge__pulse" aria-hidden="true"></span>
+                    Sistema IoT · Ganadería de Registro · México
+                </div>
+
+                <h1 class="hero__heading" id="hero-heading">
+                    Monitoreo en tiempo real<br />
+                    <em>dentro del vendaje.</em>
+                </h1>
+
+                <p class="hero__sub">
+                    VetSense detecta anomalías térmicas y cardiacas en animales bajo yeso ortopédico,
+                    sin retirar el material de inmovilización. Tecnología LoRa + Bluetooth para
+                    entornos rurales sin cobertura celular.
+                </p>
+
+                <div class="hero__actions">
+                    <a href="monitoreo.html" class="btn btn--primary btn--lg">
+                        <span class="btn__dot" aria-hidden="true"></span>
+                        Abrir Panel en Vivo
+                    </a>
+                    <a href="#sistema" class="btn btn--ghost btn--lg">Ver el Sistema ↓</a>
+                </div>
+
+                <div class="hero__stats" role="list" aria-label="Estadísticas clave">
+                    <div class="stat" role="listitem">
+                        <span class="stat__value">2 km</span>
+                        <span class="stat__label">Alcance LoRa</span>
+                    </div>
+                    <div class="stat__divider" aria-hidden="true"></div>
+                    <div class="stat" role="listitem">
+                        <span class="stat__value">&lt;10 s</span>
+                        <span class="stat__label">Latencia de alerta</span>
+                    </div>
+                    <div class="stat__divider" aria-hidden="true"></div>
+                    <div class="stat" role="listitem">
+                        <span class="stat__value">$500K</span>
+                        <span class="stat__label">MXN riesgo por ejemplar</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Decorative device mockup -->
+            <div class="hero__device" aria-hidden="true">
+                <div class="device__screen">
+                    <div class="device__header">
+                        <span class="device__dot device__dot--green"></span>
+                        <span class="device__title">NODO_MEDICO_01</span>
+                    </div>
+                    <div class="device__row">
+                        <span class="device__label">TEMP.</span>
+                        <span class="device__value device__value--highlight">37.5 °C</span>
+                    </div>
+                    <div class="device__row">
+                        <span class="device__label">BPM</span>
+                        <span class="device__value">84</span>
+                    </div>
+                    <div class="device__row">
+                        <span class="device__label">HUMEDAD</span>
+                        <span class="device__value">52 %</span>
+                    </div>
+                    <div class="device__row">
+                        <span class="device__label">PAQUETE</span>
+                        <span class="device__value">#7</span>
+                    </div>
+                    <div class="device__status">
+                        <span class="device__dot device__dot--green"></span> Enviando...
+                    </div>
+                    <div class="device__waveform" aria-hidden="true">
+                        <svg viewBox="0 0 200 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <polyline
+                                points="0,20 20,20 30,5 40,35 50,20 70,20 80,10 90,30 100,20 130,20 140,8 150,32 160,20 200,20"
+                                stroke="#00a19b" stroke-width="1.5" fill="none" class="waveform-line" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════════
+         PROBLEMA
+    ══════════════════════════════════════════════ -->
+        <section class="section section--dark" id="problema" aria-labelledby="problema-heading">
+            <div class="container">
+                <div class="section__label" aria-hidden="true">01 — Problemática</div>
+                <h2 class="section__heading" id="problema-heading">
+                    El yeso oculta lo que<br /><em>el ojo no puede ver.</em>
+                </h2>
+                <div class="problem-grid">
+                    <div class="problem__text">
+                        <p>
+                            En el sector ganadero mexicano, las fracturas y lesiones externas en animales de
+                            alto valor genético presentan complicaciones post-quirúrgicas que frecuentemente
+                            no son detectadas a tiempo. Los métodos de inmovilización rígida como el yeso
+                            impiden la observación directa del miembro afectado.
+                        </p>
+                        <p>
+                            Esta falta de visibilidad clínica permite que procesos infecciosos avancen hasta
+                            convertirse en sepsis, representando pérdidas económicas de entre
+                            <strong>$50,000 y $500,000 MXN por ejemplar</strong>, sin contar la pérdida
+                            irreversible de capital genético.
+                        </p>
+                        <blockquote class="pull-quote">
+                            "El uso del yeso presenta la desventaja crítica de impedir la observación
+                            directa del miembro, ocultando la evolución de heridas."
+                            <cite>— Berasain, 2017</cite>
+                        </blockquote>
+                    </div>
+                    <div class="problem__cards" role="list" aria-label="Consecuencias del problema">
+                        <div class="problem-card" role="listitem">
+                            <div class="problem-card__icon" aria-hidden="true">🦠</div>
+                            <h3 class="problem-card__title">Sepsis oculta</h3>
+                            <p class="problem-card__desc">Las infecciones progresan sin detectarse bajo el material de
+                                inmovilización.</p>
+                        </div>
+                        <div class="problem-card" role="listitem">
+                            <div class="problem-card__icon" aria-hidden="true">📉</div>
+                            <h3 class="problem-card__title">Pérdida económica</h3>
+                            <p class="problem-card__desc">Diagnósticos tardíos en post-operatorios elevan los costos de
+                                recuperación.</p>
+                        </div>
+                        <div class="problem-card" role="listitem">
+                            <div class="problem-card__icon" aria-hidden="true">🧬</div>
+                            <h3 class="problem-card__title">Capital genético</h3>
+                            <p class="problem-card__desc">Cada ejemplar perdido representa años de selección y mejora
+                                genética irreemplazables.</p>
+                        </div>
+                        <div class="problem-card" role="listitem">
+                            <div class="problem-card__icon" aria-hidden="true">📡</div>
+                            <h3 class="problem-card__title">Sin conectividad</h3>
+                            <p class="problem-card__desc">Los entornos rurales carecen de cobertura celular para
+                                monitoreo remoto convencional.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════════
+         SISTEMA — CÓMO FUNCIONA
+    ══════════════════════════════════════════════ -->
+        <section class="section" id="sistema" aria-labelledby="sistema-heading">
+            <div class="container">
+                <div class="section__label" aria-hidden="true">02 — El Sistema</div>
+                <h2 class="section__heading" id="sistema-heading">
+                    Cómo funciona<br /><em>VetSense</em>
+                </h2>
+
+                <div class="flow" role="list" aria-label="Flujo del sistema">
+                    <div class="flow__step" role="listitem">
+                        <div class="flow__number" aria-hidden="true">01</div>
+                        <div class="flow__icon" aria-hidden="true">🩺</div>
+                        <h3 class="flow__title">Sensado</h3>
+                        <p class="flow__desc">El módulo DS18B20 y AD8232 integrado en el vendaje captura temperatura
+                            local y ritmo cardiaco (BPM) del animal en tiempo real.</p>
+                    </div>
+                    <div class="flow__arrow" aria-hidden="true">→</div>
+                    <div class="flow__step" role="listitem">
+                        <div class="flow__number" aria-hidden="true">02</div>
+                        <div class="flow__icon" aria-hidden="true">📶</div>
+                        <h3 class="flow__title">Transmisión LoRa</h3>
+                        <p class="flow__desc">Los datos se empaquetan en JSON y se transmiten via LoRa 433 MHz al
+                            gateway central. Sin WiFi, sin SIM. Hasta 2 km de alcance.</p>
+                    </div>
+                    <div class="flow__arrow" aria-hidden="true">→</div>
+                    <div class="flow__step" role="listitem">
+                        <div class="flow__number" aria-hidden="true">03</div>
+                        <div class="flow__icon" aria-hidden="true">📱</div>
+                        <h3 class="flow__title">Visualización</h3>
+                        <p class="flow__desc">El veterinario recibe alertas en tiempo real en su dispositivo móvil vía
+                            Bluetooth desde el gateway receptor ESP32.</p>
+                    </div>
+                    <div class="flow__arrow" aria-hidden="true">→</div>
+                    <div class="flow__step" role="listitem">
+                        <div class="flow__number" aria-hidden="true">04</div>
+                        <div class="flow__icon" aria-hidden="true">🚨</div>
+                        <h3 class="flow__title">Alerta crítica</h3>
+                        <p class="flow__desc">Si la temperatura o BPM superan los umbrales clínicos, se genera una
+                            alerta visual inmediata. Tiempo de respuesta &lt; 10 segundos.</p>
+                    </div>
+                </div>
+
+                <!-- Data packet visual -->
+                <div class="packet-demo" aria-label="Ejemplo de paquete de datos transmitido" role="figure">
+                    <div class="packet-demo__label">Ejemplo de trama de datos transmitida</div>
+                    <div class="packet-demo__code">
+                        <span class="packet__pipe">|</span><span class="packet__key">T:</span><span
+                            class="packet__val">37.5</span><span class="packet__pipe">|</span><span
+                            class="packet__key">H:</span><span class="packet__val">50</span><span
+                            class="packet__pipe">|</span><span class="packet__key">B:</span><span
+                            class="packet__val">85</span><span class="packet__pipe">|</span><span
+                            class="packet__key">#</span><span class="packet__val">1</span>
+                    </div>
+                    <div class="packet-demo__legend">
+                        <span><strong>T</strong> = Temperatura °C</span>
+                        <span><strong>H</strong> = Humedad %</span>
+                        <span><strong>B</strong> = BPM cardíacos</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════════
+         TECNOLOGÍA
+    ══════════════════════════════════════════════ -->
+        <section class="section section--alt" id="tecnologia" aria-labelledby="tech-heading">
+            <div class="container">
+                <div class="section__label" aria-hidden="true">03 — Tecnología</div>
+                <h2 class="section__heading" id="tech-heading">
+                    Hardware &amp; Arquitectura
+                </h2>
+
+                <div class="tech-grid">
+                    <div class="tech-card" role="article" aria-labelledby="tech-esp32">
+                        <div class="tech-card__tag">Microcontrolador</div>
+                        <h3 class="tech-card__name" id="tech-esp32">ESP32 LoRa V3</h3>
+                        <p class="tech-card__maker">Heltec · SX1262</p>
+                        <p class="tech-card__desc">Núcleo dual con Wi-Fi, Bluetooth y transceptor LoRa integrado. Opera
+                            en banda 433 MHz para máximo alcance rural.</p>
+                        <div class="tech-card__specs">
+                            <span>WiFi + BT</span>
+                            <span>LoRa 433 MHz</span>
+                            <span>OLED 0.96"</span>
+                        </div>
+                    </div>
+
+                    <div class="tech-card" role="article" aria-labelledby="tech-ds18b20">
+                        <div class="tech-card__tag">Temperatura</div>
+                        <h3 class="tech-card__name" id="tech-ds18b20">DS18B20</h3>
+                        <p class="tech-card__maker">Dallas / Maxim</p>
+                        <p class="tech-card__desc">Sensor digital de temperatura de alta precisión, lectura mediante
+                            protocolo One-Wire. Ideal para integración en yeso.</p>
+                        <div class="tech-card__specs">
+                            <span>±0.5°C</span>
+                            <span>One-Wire</span>
+                            <span>3V–5.5V</span>
+                        </div>
+                    </div>
+
+                    <div class="tech-card" role="article" aria-labelledby="tech-ad8232">
+                        <div class="tech-card__tag">Pulso Cardíaco</div>
+                        <h3 class="tech-card__name" id="tech-ad8232">AD8232 ECG</h3>
+                        <p class="tech-card__maker">SparkFun · Analog Devices</p>
+                        <p class="tech-card__desc">Módulo de monitoreo del ritmo cardiaco (BPM). Permite detectar estrés
+                            o inflamación sistémica en el ejemplar.</p>
+                        <div class="tech-card__specs">
+                            <span>ECG / BPM</span>
+                            <span>Analógico</span>
+                            <span>3.3V</span>
+                        </div>
+                    </div>
+
+                    <div class="tech-card" role="article" aria-labelledby="tech-lora">
+                        <div class="tech-card__tag">Protocolo</div>
+                        <h3 class="tech-card__name" id="tech-lora">LoRa + RadioLib</h3>
+                        <p class="tech-card__maker">Semtech · RadioLib.h</p>
+                        <p class="tech-card__desc">Protocolo de comunicación de largo alcance y bajo consumo. La
+                            librería RadioLib gestiona el estado del transceptor sin depender de WiFi.</p>
+                        <div class="tech-card__specs">
+                            <span>2 km alcance</span>
+                            <span>Bajo consumo</span>
+                            <span>JSON payload</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="arch-diagram" role="figure" aria-label="Diagrama de arquitectura del sistema">
+                    <div class="arch__node arch__node--sensor">
+                        <span aria-hidden="true">🐄</span>
+                        <span>Nodo Sensor</span>
+                        <small>DS18B20 + AD8232</small>
+                    </div>
+                    <div class="arch__line" aria-hidden="true">
+                        <span class="arch__label">LoRa 433 MHz</span>
+                        <div class="arch__arrow"></div>
+                    </div>
+                    <div class="arch__node arch__node--gateway">
+                        <span aria-hidden="true">📡</span>
+                        <span>Gateway Receptor</span>
+                        <small>ESP32 LoRa V3</small>
+                    </div>
+                    <div class="arch__line" aria-hidden="true">
+                        <span class="arch__label">Bluetooth</span>
+                        <div class="arch__arrow"></div>
+                    </div>
+                    <div class="arch__node arch__node--device">
+                        <span aria-hidden="true">📱</span>
+                        <span>Dispositivo Vet</span>
+                        <small>Dashboard móvil</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════════
+         RESULTADOS
+    ══════════════════════════════════════════════ -->
+        <section class="section section--dark" id="resultados" aria-labelledby="resultados-heading">
+            <div class="container">
+                <div class="section__label" aria-hidden="true">04 — Resultados</div>
+                <h2 class="section__heading" id="resultados-heading">
+                    Lo que logramos<br /><em>en la primera iteración</em>
+                </h2>
+
+                <div class="results-grid">
+                    <div class="result-item">
+                        <div class="result-item__num">01</div>
+                        <p>Captura estable de temperatura (DS18B20) y ritmo cardiaco (AD8232) de forma simultánea, sin
+                            conflictos de direcciones ni caídas de voltaje en el nodo sensor.</p>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-item__num">02</div>
+                        <p>Comunicación inalámbrica LoRa funcional entre el módulo lector y el receptor, transmitiendo
+                            tramas JSON con temperatura, humedad y BPM cada ciclo.</p>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-item__num">03</div>
+                        <p>Visualización en pantalla OLED del nodo sensor y en monitor serial del gateway, confirmando
+                            la recepción correcta de los paquetes de datos en tiempo real.</p>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-item__num">04</div>
+                        <p>Integración Bluetooth exitosa: los datos se despliegan en la aplicación nRF Toolbox en
+                            dispositivo móvil, validando la cadena completa sensor → LoRa → BLE → móvil.</p>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-item__num">05</div>
+                        <p>Los cambios térmicos en el ambiente son detectados y reportados en menos de <strong>10
+                                segundos</strong>, cumpliendo el umbral mínimo para alertas clínicas de utilidad
+                            veterinaria.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════════
+         CTA — IR A MONITOREO
+    ══════════════════════════════════════════════ -->
+        <section class="section cta-section" aria-labelledby="cta-heading">
+            <div class="cta-section__glow" aria-hidden="true"></div>
+            <div class="container cta-section__inner">
+                <h2 class="cta-section__heading" id="cta-heading">
+                    ¿Listo para ver los<br /><em>datos en vivo?</em>
+                </h2>
+                <p class="cta-section__sub">
+                    Accede al panel de monitoreo para visualizar temperatura, BPM y humedad
+                    del animal en tiempo real, con alertas visuales cuando se superan los umbrales clínicos.
+                </p>
+                <a href="monitoreo.html" class="btn btn--primary btn--xl" aria-label="Ir al panel de monitoreo en vivo">
+                    <span class="btn__dot btn__dot--lg" aria-hidden="true"></span>
+                    Abrir Panel de Monitoreo
+                    <span class="btn__arrow" aria-hidden="true">→</span>
+                </a>
+                <p class="cta-section__note" role="note">
+                    Requiere conexión Bluetooth al dispositivo receptor ESP32
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ══════════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════════ -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="container footer__inner">
+            <div class="footer__brand">
+                <span class="nav__logo-icon" aria-hidden="true">⬡</span>
+                <span class="nav__logo-text">NodoVet<em>Sense</em></span>
+            </div>
+            <p class="footer__desc">
+                Sistema de Monitoreo IoT para Ganadería de Recuperación Osteodérmica.<br />
+                Alineado a los PRONACES de Soberanía Alimentaria · México
+            </p>
+            <div class="footer__meta">
+                <span>VetSense © 2026</span>
+                <span>ESP32 LoRa V3 · DS18B20 · AD8232</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+
+</html>
