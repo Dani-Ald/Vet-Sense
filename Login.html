@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Accede a tu cuenta VetSense para monitorear signos vitales de ganado en tiempo real." />
+    <title>Iniciar Sesión — VetSense</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap"
+        rel="stylesheet" />
+</head>
+
+<body class="registro-page">
+
+    <div class="login-card" id="loginCard">
+
+        <!-- Logo -->
+        <a href="index.html" class="login-logo" aria-label="VetSense inicio">
+            <svg class="login-logo__svg" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true">
+                <rect x="18" y="3" width="20" height="50" rx="8" fill="#00a19b" />
+                <rect x="3" y="18" width="50" height="20" rx="8" fill="#00a19b" />
+                <ellipse cx="28" cy="32" rx="4.8" ry="4.2" fill="white" />
+                <ellipse cx="21.5" cy="24" rx="2.2" ry="2.8" fill="white" />
+                <ellipse cx="26" cy="21" rx="2.2" ry="2.8" fill="white" />
+                <ellipse cx="30" cy="21" rx="2.2" ry="2.8" fill="white" />
+                <ellipse cx="34.5" cy="24" rx="2.2" ry="2.8" fill="white" />
+            </svg>
+            <span class="login-logo__text">Vet<em>Sense</em></span>
+        </a>
+
+        <!-- ═══ Vista: Login ═══ -->
+        <div id="vistaLogin">
+            <h2 class="login-title">Iniciar sesión</h2>
+            <p class="login-subtitle">Accede al panel de monitoreo en tiempo real</p>
+
+            <form id="loginForm" class="login-form" novalidate>
+                <div class="login-field">
+                    <label for="loginEmail" class="login-label">Correo electrónico</label>
+                    <div class="login-input-wrap">
+                        <svg class="login-input-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                            <path d="M3 5l7 5 7-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <rect x="2" y="4" width="16" height="12" rx="3" stroke="currentColor" stroke-width="1.5"/>
+                        </svg>
+                        <input type="email" id="loginEmail" class="login-input" placeholder="tu@correo.com"
+                            required autocomplete="email" />
+                    </div>
+                </div>
+                <div class="login-field">
+                    <label for="loginPassword" class="login-label">Contraseña</label>
+                    <div class="login-input-wrap">
+                        <svg class="login-input-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                            <rect x="4" y="9" width="12" height="8" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M7 9V6a3 3 0 016 0v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                        <input type="password" id="loginPassword" class="login-input" placeholder="••••••••"
+                            required autocomplete="current-password" />
+                        <button type="button" class="login-toggle-pw" id="togglePw" aria-label="Mostrar contraseña">
+                            <svg viewBox="0 0 20 20" fill="none" width="18" height="18">
+                                <path d="M1 10s3.5-6 9-6 9 6 9 6-3.5 6-9 6-9-6-9-6z" stroke="currentColor" stroke-width="1.5"/>
+                                <circle cx="10" cy="10" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="login-actions-row">
+                    <button type="button" class="login-link-btn" id="btnShowReset">¿Olvidaste tu contraseña?</button>
+                </div>
+
+                <button type="submit" class="btn btn--primary login-submit" id="loginSubmitBtn">
+                    <span class="btn__dot" aria-hidden="true"></span>
+                    Acceder al Monitoreo
+                </button>
+
+                <div class="login-error" id="loginError" role="alert" hidden></div>
+            </form>
+
+            <div class="login-divider">
+                <span>¿No tienes cuenta?</span>
+            </div>
+
+            <a href="Registro.html" class="btn btn--ghost login-register-btn">
+                Crear una cuenta
+            </a>
+        </div>
+
+        <!-- ═══ Vista: Restablecer contraseña ═══ -->
+        <div id="vistaReset" style="display: none;">
+            <h2 class="login-title">Restablecer contraseña</h2>
+            <p class="login-subtitle">Ingresa tu correo y te enviaremos un enlace para crear una nueva contraseña</p>
+
+            <form id="resetForm" class="login-form" novalidate>
+                <div class="login-field">
+                    <label for="resetEmail" class="login-label">Correo electrónico</label>
+                    <div class="login-input-wrap">
+                        <svg class="login-input-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                            <path d="M3 5l7 5 7-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <rect x="2" y="4" width="16" height="12" rx="3" stroke="currentColor" stroke-width="1.5"/>
+                        </svg>
+                        <input type="email" id="resetEmail" class="login-input" placeholder="tu@correo.com"
+                            required autocomplete="email" />
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn--primary login-submit">
+                    <span class="btn__dot" aria-hidden="true"></span>
+                    Enviar enlace de restablecimiento
+                </button>
+
+                <div class="login-error" id="resetError" role="alert" hidden></div>
+                <div class="login-success" id="resetSuccess" role="alert" hidden></div>
+            </form>
+
+            <button type="button" class="login-back-btn" id="btnBackToLogin">
+                ← Volver a iniciar sesión
+            </button>
+        </div>
+
+    </div>
+
+    <script type="module" src="js/login.js"></script>
+</body>
+
+</html>

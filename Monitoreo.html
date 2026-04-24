@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="description" content="VetSense — Panel de Monitoreo BLE en tiempo real para seguimiento de signos vitales en ganadería." />
+    <meta name="description"
+        content="VetSense — Panel de Monitoreo BLE en tiempo real para seguimiento de signos vitales en ganadería." />
     <title>Panel de Monitoreo — VetSense</title>
     <link rel="stylesheet" href="styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -12,6 +12,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Space+Mono:wght@400;700&display=swap"
         rel="stylesheet" />
+    <script type="module" src="js/protect.js"></script>
 </head>
 
 <body class="mon-page">
@@ -22,19 +23,27 @@
     <header class="site-header" role="banner">
         <nav class="nav container" aria-label="Navegación principal">
             <a href="index.html" class="nav__logo" aria-label="VetSense inicio">
-                <span class="nav__logo-icon" aria-hidden="true">⬡</span>
-                <span class="nav__logo-text">NodoVet<em>Sense</em></span>
+                <svg class="nav__logo-svg" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true">
+                    <!-- Cruz médica sólida -->
+                    <rect x="18" y="3" width="20" height="50" rx="8" fill="#00a19b" />
+                    <rect x="3" y="18" width="50" height="20" rx="8" fill="#00a19b" />
+                    <!-- Huella de pata blanca -->
+                    <ellipse cx="28" cy="32" rx="4.8" ry="4.2" fill="white" />
+                    <ellipse cx="21.5" cy="24" rx="2.2" ry="2.8" fill="white" />
+                    <ellipse cx="26" cy="21" rx="2.2" ry="2.8" fill="white" />
+                    <ellipse cx="30" cy="21" rx="2.2" ry="2.8" fill="white" />
+                    <ellipse cx="34.5" cy="24" rx="2.2" ry="2.8" fill="white" />
+                </svg>
+                <span class="nav__logo-text">Vet<em>Sense</em></span>
             </a>
-            <ul class="nav__links" role="list">
-                <li><a href="index.html#problema" class="nav__link">Problema</a></li>
-                <li><a href="index.html#sistema" class="nav__link">Sistema</a></li>
-                <li><a href="index.html#tecnologia" class="nav__link">Tecnología</a></li>
-                <li><a href="index.html#resultados" class="nav__link">Resultados</a></li>
-            </ul>
-            <a href="monitoreo.html" class="btn btn--primary nav__cta" aria-current="page">
-                <span class="btn__dot" aria-hidden="true"></span>
-                Panel de Monitoreo
-            </a>
+            <div class="nav__ctas" style="display: flex; gap: 12px; align-items: center;">
+                <span class="nav__welcome" id="navWelcome" style="font-size: 13px; color: var(--color-text-dim); font-weight: 400;">Bienvenido</span>
+                <a href="index.html" class="btn btn--ghost" aria-label="Volver al inicio">Inicio</a>
+                <button class="btn btn--primary" id="btnLogout" aria-label="Cerrar sesión">
+                    Cerrar sesión
+                </button>
+            </div>
         </nav>
     </header>
 
@@ -48,7 +57,7 @@
             <div class="mon-header">
                 <div>
                     <div class="section__label">Monitoreo en vivo</div>
-                    <h1 class="mon-title">Panel <em>BLE</em></h1>
+                    <h1 class="mon-title">Bienvenido al Panel <em>BLE</em></h1>
                 </div>
                 <div class="ble-badge" id="bleBadge">
                     <div class="ble-dot"></div>

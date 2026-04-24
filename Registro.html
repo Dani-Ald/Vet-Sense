@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Registro</title>
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="js/auth.js"></script>
+</head>
+
+<body class="registro-page">
+
+  <div class="registro-card">
+    <a href="index.html"
+      style="display:inline-block; margin-bottom: 16px; color: var(--color-teal); font-weight: 600; text-decoration: none;">&larr;
+      Volver a inicio</a>
+    <h2>Crear cuenta</h2>
+
+    <form id="registroForm" class="registro-form">
+      <input type="text" id="nombre" class="registro-input" placeholder="Nombre completo" required>
+      <input type="email" id="email" class="registro-input" placeholder="Correo electrónico" required>
+      <input type="password" id="password" class="registro-input" placeholder="Contraseña" required>
+
+      <button type="submit" class="btn btn--primary registro-btn">
+        <span class="btn__dot" aria-hidden="true"></span> Registrarse
+      </button>
+    </form>
+
+    <div id="seccion-verificacion" style="display: none; margin-top: 20px;">
+      <h3 style="color: var(--color-teal-dark); font-family: var(--font-display); margin-bottom: 12px; font-weight: 400; font-size: 24px;">¡Verifica tu correo!</h3>
+      <p style="color: var(--color-text-dim); font-size: 14px; margin-bottom: 24px; line-height: 1.5;">Te hemos enviado un enlace. Haz clic en él y luego inicia sesión aquí abajo:</p>
+      
+      <form id="loginRapidoForm" class="registro-form">
+        <input type="email" id="loginEmail" class="registro-input" placeholder="Correo electrónico" required>
+        <input type="password" id="loginPassword" class="registro-input" placeholder="Contraseña" required>
+        <button type="submit" class="btn btn--primary registro-btn">
+          <span class="btn__dot" aria-hidden="true"></span> Acceder
+        </button>
+      </form>
+    </div>
+
+    <p id="mensaje" class="registro-msg"></p>
+  </div>
+
+
+
+</body>
+
+</html>
