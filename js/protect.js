@@ -3,7 +3,7 @@ import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/
 
 onAuthStateChanged(auth, (user) => {
     if (!user) {
-        window.location.href = "Login.html";
+        window.location.href = "./Login.html";
         return;
     }
 
@@ -20,6 +20,6 @@ const btnLogout = document.getElementById("btnLogout");
 if (btnLogout) {
     btnLogout.addEventListener("click", async () => {
         await signOut(auth);
-        window.location.href = "Login.html";
+        window.location.href = "./Login.html";
     });
 }

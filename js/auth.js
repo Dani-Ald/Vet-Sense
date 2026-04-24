@@ -55,7 +55,7 @@ if (loginRapidoForm) {
                 return;
             }
 
-            window.location.href = "Monitoreo.html";
+            window.location.href = "./Monitoreo.html";
         } catch (error) {
             alert("Credenciales incorrectas o error al iniciar sesión: " + error.message);
         }

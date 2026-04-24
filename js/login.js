@@ -73,7 +73,7 @@ loginForm.addEventListener("submit", async (e) => {
         }
 
         // ✓ Login exitoso → redirigir
-        window.location.href = "Monitoreo.html";
+        window.location.href = "./Monitoreo.html";
 
     } catch (error) {
         loginError.textContent = errorMsg(error.code);
