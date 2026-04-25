@@ -182,11 +182,11 @@ function handleContactSubmit(event) {
                 el.classList.remove('active');
                 el.setAttribute('aria-selected', 'false');
             });
-            
+
             // Add active to clicked
             item.classList.add('active');
             item.setAttribute('aria-selected', 'true');
-            
+
             // Change image with fade effect
             image.style.opacity = '0.4';
             setTimeout(function () {
@@ -196,11 +196,11 @@ function handleContactSubmit(event) {
         });
 
         // Also allow keyboard navigation (Enter/Space)
-        item.addEventListener('keydown', function(e) {
+        item.addEventListener('keydown', function (e) {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
                 item.click();
             }
         });
     });
-})();
+})();

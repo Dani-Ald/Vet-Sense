@@ -13,9 +13,9 @@ formulario.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     // Capturar los valores de los 4 campos
-    const nombre  = document.getElementById("contactoNombre").value.trim();
-    const email   = document.getElementById("contactoEmail").value.trim();
-    const opcion  = document.getElementById("contactoOpcion").value;
+    const nombre = document.getElementById("contactoNombre").value.trim();
+    const email = document.getElementById("contactoEmail").value.trim();
+    const opcion = document.getElementById("contactoOpcion").value;
     const mensaje = document.getElementById("contactoMensaje").value.trim();
 
     try {

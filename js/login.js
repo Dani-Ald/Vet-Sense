@@ -2,16 +2,16 @@ import { auth } from "./firebase-config.js";
 import { signInWithEmailAndPassword, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-auth.js";
 
 // ─── Elementos ─────────────────────────────────────────
-const loginForm      = document.getElementById("loginForm");
-const resetForm      = document.getElementById("resetForm");
-const vistaLogin     = document.getElementById("vistaLogin");
-const vistaReset     = document.getElementById("vistaReset");
-const btnShowReset   = document.getElementById("btnShowReset");
+const loginForm = document.getElementById("loginForm");
+const resetForm = document.getElementById("resetForm");
+const vistaLogin = document.getElementById("vistaLogin");
+const vistaReset = document.getElementById("vistaReset");
+const btnShowReset = document.getElementById("btnShowReset");
 const btnBackToLogin = document.getElementById("btnBackToLogin");
-const togglePw       = document.getElementById("togglePw");
-const loginError     = document.getElementById("loginError");
-const resetError     = document.getElementById("resetError");
-const resetSuccess   = document.getElementById("resetSuccess");
+const togglePw = document.getElementById("togglePw");
+const loginError = document.getElementById("loginError");
+const resetError = document.getElementById("resetError");
+const resetSuccess = document.getElementById("resetSuccess");
 
 // ─── Toggle contraseña visible ─────────────────────────
 togglePw.addEventListener("click", () => {
@@ -54,7 +54,7 @@ loginForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     loginError.hidden = true;
 
-    const email    = document.getElementById("loginEmail").value.trim();
+    const email = document.getElementById("loginEmail").value.trim();
     const password = document.getElementById("loginPassword").value;
     const submitBtn = document.getElementById("loginSubmitBtn");
 

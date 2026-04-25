@@ -367,7 +367,8 @@ strong {
 }
 
 .nav__mobile {
-  display: none; /* oculto por defecto — JS controla el atributo hidden */
+  display: none;
+  /* oculto por defecto — JS controla el atributo hidden */
   position: fixed;
   top: 80px;
   left: 0;
@@ -386,8 +387,15 @@ strong {
 }
 
 @keyframes slideDown {
-  from { opacity: 0; transform: translateY(-8px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Solo visible en móvil cuando el JS quita el atributo hidden */
@@ -1428,7 +1436,8 @@ strong {
   /* Formulario de contacto — inputs más cómodos en táctil */
   .form-input {
     padding: 14px 16px;
-    font-size: 16px; /* evita zoom automático en iOS */
+    font-size: 16px;
+    /* evita zoom automático en iOS */
   }
 
   .btn--lg {
@@ -2439,7 +2448,7 @@ strong {
   border-radius: var(--radius-md);
   font-family: var(--font-body);
   font-size: 14px;
-  background: rgba(255,255,255,0.8);
+  background: rgba(255, 255, 255, 0.8);
   color: var(--color-text);
   transition: border-color 0.3s, box-shadow 0.3s;
 }
@@ -2461,8 +2470,16 @@ strong {
   font-size: 13px;
   color: var(--color-text-dim);
 }
-.registro-msg.success { color: var(--color-teal); font-weight: 500; }
-.registro-msg.error { color: #c0392b; font-weight: 500; }
+
+.registro-msg.success {
+  color: var(--color-teal);
+  font-weight: 500;
+}
+
+.registro-msg.error {
+  color: #c0392b;
+  font-weight: 500;
+}
 
 /* ─── Login Page ─── */
 .login-card {
@@ -2477,8 +2494,15 @@ strong {
 }
 
 @keyframes login-fade-in {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .login-logo {
@@ -2663,11 +2687,27 @@ strong {
 }
 
 @keyframes login-shake {
-  0%, 100% { transform: translateX(0); }
-  20% { transform: translateX(-6px); }
-  40% { transform: translateX(6px); }
-  60% { transform: translateX(-4px); }
-  80% { transform: translateX(4px); }
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  20% {
+    transform: translateX(-6px);
+  }
+
+  40% {
+    transform: translateX(6px);
+  }
+
+  60% {
+    transform: translateX(-4px);
+  }
+
+  80% {
+    transform: translateX(4px);
+  }
 }
 
 .login-divider {
