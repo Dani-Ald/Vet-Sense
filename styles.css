@@ -256,7 +256,7 @@ strong {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 100;
+  z-index: 1000;
   background: rgba(240, 250, 249, 0.88);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -378,7 +378,7 @@ strong {
   top: 80px;
   left: 0;
   right: 0;
-  z-index: 99;
+  z-index: 999;
   flex-direction: column;
   padding: 16px 24px 28px;
   gap: 8px;
