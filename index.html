@@ -673,21 +673,21 @@
                         validación y buscamos colaboradores, advisors y primeros usuarios.
                     </p>
                 </div>
-                <form class="contact-form" id="contactForm" onsubmit="handleContactSubmit(event)"
+                <form class="contact-form" id="contactoForm"
                     aria-label="Formulario de contacto VetSense" novalidate>
                     <div class="form-group">
-                        <label for="contact-name" class="form-label">Nombre</label>
-                        <input type="text" id="contact-name" name="nombre" class="form-input" placeholder="Tu nombre"
+                        <label for="contactoNombre" class="form-label">Nombre</label>
+                        <input type="text" id="contactoNombre" name="nombre" class="form-input" placeholder="Tu nombre"
                             required autocomplete="name" />
                     </div>
                     <div class="form-group">
-                        <label for="contact-email" class="form-label">Correo electrónico</label>
-                        <input type="email" id="contact-email" name="correo" class="form-input"
+                        <label for="contactoEmail" class="form-label">Correo electrónico</label>
+                        <input type="email" id="contactoEmail" name="correo" class="form-input"
                             placeholder="tu@correo.com" required autocomplete="email" />
                     </div>
                     <div class="form-group">
-                        <label for="contact-role" class="form-label">¿Cómo puedo participar?</label>
-                        <select id="contact-role" name="rol" class="form-input">
+                        <label for="contactoOpcion" class="form-label">¿Cómo puedo participar?</label>
+                        <select id="contactoOpcion" name="rol" class="form-input">
                             <option value="">Selecciona una opción…</option>
                             <option value="ganadero">Soy ganadero y me interesa el sistema</option>
                             <option value="veterinario">Soy veterinario y quiero colaborar</option>
@@ -697,8 +697,8 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="contact-msg" class="form-label">Mensaje</label>
-                        <textarea id="contact-msg" name="mensaje" class="form-input form-textarea"
+                        <label for="contactoMensaje" class="form-label">Mensaje</label>
+                        <textarea id="contactoMensaje" name="mensaje" class="form-input form-textarea"
                             placeholder="Cuéntanos sobre tu interés o consulta…" rows="4"></textarea>
                     </div>
                     <button type="submit" class="btn btn--primary btn--lg contact-form__submit" id="contactSubmitBtn">
@@ -745,6 +745,7 @@
     </footer>
 
     <script src="./scripts.js"></script>
+    <script type="module" src="./js/contacto.js"></script>
 </body>
 
 </html>
