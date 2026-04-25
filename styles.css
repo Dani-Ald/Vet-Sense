@@ -75,12 +75,12 @@ body {
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
-  animation: pageFadeIn 0.45s ease both;
+  animation: pageFadeIn 0.45s ease-out;
 }
 
 @keyframes pageFadeIn {
   from { opacity: 0; transform: translateY(6px); }
-  to   { opacity: 1; transform: translateY(0); }
+  to   { opacity: 1; transform: none; }
 }
 
 img,
