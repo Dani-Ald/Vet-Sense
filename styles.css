@@ -75,6 +75,12 @@ body {
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  animation: pageFadeIn 0.45s ease both;
+}
+
+@keyframes pageFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 img,
@@ -518,12 +524,12 @@ strong {
 }
 
 .hero__sub {
-  font-size: 14px;
+  font-size: clamp(0.875rem, 1.6vw, 1rem);
   font-weight: 300;
   color: var(--color-text);
   max-width: 460px;
   margin-bottom: 32px;
-  line-height: 1.75;
+  line-height: 1.8;
 }
 
 .hero__actions {
@@ -1349,7 +1355,8 @@ strong {
   }
 
   .nav__links,
-  .nav__cta {
+  .nav__cta,
+  .nav__ctas {
     display: none;
   }
 
@@ -1375,6 +1382,34 @@ strong {
 
   .stat__divider {
     height: 28px;
+  }
+
+  /* Apple layout — apila sidebar + visual en móvil */
+  .apple-layout {
+    flex-direction: column;
+    gap: 32px;
+    min-height: unset;
+  }
+
+  .apple-layout__sidebar {
+    flex: unset;
+    width: 100%;
+  }
+
+  .apple-layout__visual {
+    height: 260px;
+    width: 100%;
+  }
+
+  /* Formulario de contacto — inputs más cómodos en táctil */
+  .form-input {
+    padding: 14px 16px;
+    font-size: 16px; /* evita zoom automático en iOS */
+  }
+
+  .btn--lg {
+    padding: 16px 24px;
+    font-size: 16px;
   }
 }
 

@@ -8,10 +8,17 @@ onAuthStateChanged(auth, (user) => {
     }
 
     // ── Mostrar nombre en navbar ──
+    const nombre = user.displayName || user.email.split("@")[0];
+
     const welcomeEl = document.getElementById("navWelcome");
     if (welcomeEl) {
-        const nombre = user.displayName || user.email.split("@")[0];
         welcomeEl.textContent = "Hola, " + nombre;
+    }
+
+    // ── Actualizar título principal del panel ──
+    const titleEl = document.getElementById("welcomeTitle");
+    if (titleEl) {
+        titleEl.innerHTML = "Bienvenido al Panel, <em>" + nombre + "</em>";
     }
 });
 
