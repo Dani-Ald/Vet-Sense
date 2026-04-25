@@ -42,17 +42,36 @@
                 <li><a href="#resultados" class="nav__link">Resultados</a></li>
                 <li><a href="#contacto" class="nav__link">Contacto</a></li>
             </ul>
-            <div class="nav__ctas" style="display: flex; gap: 12px; align-items: center;">
+            <div class="nav__ctas">
                 <a href="./Registro.html" class="btn btn--ghost" aria-label="Crear cuenta">Registro</a>
                 <a href="./Login.html" class="btn btn--primary" aria-label="Iniciar sesión para acceder al monitoreo">
                     <span class="btn__dot" aria-hidden="true"></span>
                     Panel de Monitoreo
                 </a>
             </div>
-
+            <!-- Hamburguesa (sólo visible en móvil) -->
+            <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="nav-mobile"
+                aria-label="Abrir menú">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </button>
         </nav>
-
     </header>
+
+    <!-- Menú móvil desplegable -->
+    <div class="nav__mobile" id="nav-mobile" hidden>
+        <a href="#que-es" class="nav__link">¿Qué es?</a>
+        <a href="#problema" class="nav__link">Problema</a>
+        <a href="#sistema" class="nav__link">Sistema</a>
+        <a href="#tecnologia" class="nav__link">Tecnología</a>
+        <a href="#resultados" class="nav__link">Resultados</a>
+        <a href="#contacto" class="nav__link">Contacto</a>
+        <a href="./Registro.html" class="btn btn--ghost">Registro</a>
+        <a href="./Login.html" class="btn btn--primary">
+            <span class="btn__dot" aria-hidden="true"></span> Panel de Monitoreo
+        </a>
+    </div>
 
     <main>
 
@@ -611,10 +630,10 @@
                                 <div class="roadmap-item__title">Visualización OLED + App Bluetooth</div>
                             </div>
                         </div>
-                        <div class="roadmap-item roadmap-item--wip" role="listitem">
+                        <div class="roadmap-item roadmap-item--done" role="listitem">
                             <div class="roadmap-item__dot" aria-hidden="true"></div>
                             <div>
-                                <div class="roadmap-item__label">En progreso</div>
+                                <div class="roadmap-item__label">Completado</div>
                                 <div class="roadmap-item__title">Integración sensor de humedad</div>
                             </div>
                         </div>
@@ -623,6 +642,13 @@
                             <div>
                                 <div class="roadmap-item__label">Próximamente</div>
                                 <div class="roadmap-item__title">Dashboard de monitoreo completo</div>
+                            </div>
+                        </div>
+                        <div class="roadmap-item roadmap-item--wip" role="listitem">
+                            <div class="roadmap-item__dot" aria-hidden="true"></div>
+                            <div>
+                                <div class="roadmap-item__label">En proceso</div>
+                                <div class="roadmap-item__title">Validación InovaTec</div>
                             </div>
                         </div>
                     </div>
