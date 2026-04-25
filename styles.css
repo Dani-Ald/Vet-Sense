@@ -373,12 +373,12 @@ strong {
 }
 
 .nav__mobile {
+  display: none; /* oculto por defecto — JS controla el atributo hidden */
   position: fixed;
-  top: 80px; /* altura del header */
+  top: 80px;
   left: 0;
   right: 0;
   z-index: 99;
-  display: flex;
   flex-direction: column;
   padding: 16px 24px 28px;
   gap: 8px;
@@ -387,6 +387,20 @@ strong {
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--color-border-dim);
   box-shadow: 0 8px 24px rgba(0, 161, 155, 0.10);
+  /* Animación de entrada */
+  animation: slideDown 0.22s ease both;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Solo visible en móvil cuando el JS quita el atributo hidden */
+@media (max-width: 640px) {
+  .nav__mobile:not([hidden]) {
+    display: flex;
+  }
 }
 
 .nav__mobile a {
