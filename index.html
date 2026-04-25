@@ -673,8 +673,8 @@
                         validación y buscamos colaboradores, advisors y primeros usuarios.
                     </p>
                 </div>
-                <form class="contact-form" id="contactoForm"
-                    aria-label="Formulario de contacto VetSense" novalidate>
+                <form class="contact-form" action="https://formspree.io/f/mnjlwrjv" method="POST"
+                    aria-label="Formulario de contacto VetSense">
                     <div class="form-group">
                         <label for="contactoNombre" class="form-label">Nombre</label>
                         <input type="text" id="contactoNombre" name="nombre" class="form-input" placeholder="Tu nombre"
@@ -682,12 +682,12 @@
                     </div>
                     <div class="form-group">
                         <label for="contactoEmail" class="form-label">Correo electrónico</label>
-                        <input type="email" id="contactoEmail" name="correo" class="form-input"
+                        <input type="email" id="contactoEmail" name="email" class="form-input"
                             placeholder="tu@correo.com" required autocomplete="email" />
                     </div>
                     <div class="form-group">
                         <label for="contactoOpcion" class="form-label">¿Cómo puedo participar?</label>
-                        <select id="contactoOpcion" name="rol" class="form-input">
+                        <select id="contactoOpcion" name="como_participar" class="form-input">
                             <option value="">Selecciona una opción…</option>
                             <option value="ganadero">Soy ganadero y me interesa el sistema</option>
                             <option value="veterinario">Soy veterinario y quiero colaborar</option>
@@ -701,13 +701,10 @@
                         <textarea id="contactoMensaje" name="mensaje" class="form-input form-textarea"
                             placeholder="Cuéntanos sobre tu interés o consulta…" rows="4"></textarea>
                     </div>
-                    <button type="submit" class="btn btn--primary btn--lg contact-form__submit" id="contactSubmitBtn">
+                    <button type="submit" class="btn btn--primary btn--lg contact-form__submit">
                         <span class="btn__dot" aria-hidden="true"></span>
                         Enviar mensaje
                     </button>
-                    <div class="contact-form__success" id="contactSuccess" hidden role="alert">
-                        ✓ ¡Gracias! Nos pondremos en contacto contigo pronto.
-                    </div>
                 </form>
             </div>
         </div>
@@ -745,7 +742,6 @@
     </footer>
 
     <script src="./scripts.js"></script>
-    <script type="module" src="./js/contacto.js"></script>
 </body>
 
 </html>
