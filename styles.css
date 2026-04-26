@@ -64,7 +64,8 @@
 
 html {
   scroll-behavior: smooth;
-  font-size: 18px; /* Aumenta el tamaño base de toda la página (el default es 16px) */
+  font-size: 18px;
+  /* Aumenta el tamaño base de toda la página (el default es 16px) */
   -webkit-text-size-adjust: 100%;
 }
 
@@ -317,13 +318,14 @@ strong {
 }
 
 .nav__link {
-  padding: 6px 14px;
+  padding: 8px 16px;
   border-radius: var(--radius-sm);
   font-family: var(--font-body);
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
+  white-space: nowrap;
   color: var(--color-text-dim);
-  transition: color 0.18s ease, background 0.18s ease;
+  transition: color 0.3s ease, background 0.3s ease;
 }
 
 .nav__link:hover,
