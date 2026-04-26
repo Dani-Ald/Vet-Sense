@@ -319,10 +319,11 @@ strong {
 .nav__link {
   padding: 6px 14px;
   border-radius: var(--radius-sm);
-  font-size: 13px;
-  font-weight: 400;
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  font-weight: 600;
   color: var(--color-text-dim);
-  transition: color 0.18s, background 0.18s;
+  transition: color 0.18s ease, background 0.18s ease;
 }
 
 .nav__link:hover,
