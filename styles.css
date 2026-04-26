@@ -228,8 +228,51 @@ strong {
   transition: transform 0.2s ease;
 }
 
-.btn--xl:hover .btn__arrow {
-  transform: translateX(4px);
+.btn-animado {
+  background: var(--color-teal);
+  color: white !important;
+  transition: all 0.3s ease;
+}
+
+.btn-animado:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+  box-shadow: 0 8px 15px rgba(0, 161, 155, 0.3);
+}
+
+.btn-outline-animado {
+  color: var(--color-teal);
+  transition: all 1000ms;
+  position: relative;
+  overflow: hidden;
+  outline: 2px solid var(--color-teal);
+  border: none;
+  background: transparent;
+  z-index: 1;
+}
+
+.btn-outline-animado:hover {
+  color: #ffffff !important;
+  transform: scale(1.1);
+  outline: 2px solid var(--color-teal-dim);
+  box-shadow: 4px 5px 17px -4px rgba(0, 161, 155, 0.5);
+}
+
+.btn-outline-animado::before {
+  content: "";
+  position: absolute;
+  left: -50px;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background-color: var(--color-teal);
+  transform: skewX(45deg);
+  z-index: -1;
+  transition: width 1000ms;
+}
+
+.btn-outline-animado:hover::before {
+  width: 250%;
 }
 
 @keyframes pulse-dot {
@@ -760,7 +803,7 @@ strong {
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
   font-style: italic;
   font-size: 14px;
-  color: var(--color-cream-dim);
+  color: var(--color-teal-dark);
   margin-top: 28px;
 }
 
