@@ -43,8 +43,8 @@
                 <li><a href="#contacto" class="nav__link">Contacto</a></li>
             </ul>
             <div class="nav__ctas">
-                <a href="./Registro.html" class="btn btn--ghost btn-outline-animado" aria-label="Crear cuenta">Registro</a>
-                <a href="./Login.html" class="btn btn--primary btn-animado" aria-label="Iniciar sesión para acceder al monitoreo">
+                <a href="./Registro.html" class="btn btn--ghost btn-secundario" aria-label="Crear cuenta">Registro</a>
+                <a href="./Login.html" class="btn btn--primary btn-principal" aria-label="Iniciar sesión para acceder al monitoreo">
                     <span class="btn__dot" aria-hidden="true"></span>
                     Panel de Monitoreo
                 </a>
@@ -67,8 +67,8 @@
         <a href="#tecnologia" class="nav__link">Tecnología</a>
         <a href="#resultados" class="nav__link">Resultados</a>
         <a href="#contacto" class="nav__link">Contacto</a>
-        <a href="./Registro.html" class="btn btn--ghost btn-outline-animado">Registro</a>
-        <a href="./Login.html" class="btn btn--primary btn-animado">
+        <a href="./Registro.html" class="btn btn--ghost btn-secundario">Registro</a>
+        <a href="./Login.html" class="btn btn--primary btn-principal">
             <span class="btn__dot" aria-hidden="true"></span> Panel de Monitoreo
         </a>
     </div>
@@ -517,29 +517,20 @@
                     </div>
                 </div>
 
-                <div class="arch-diagram" role="figure" aria-label="Diagrama de arquitectura del sistema">
-                    <div class="arch__node arch__node--sensor">
-                        <span aria-hidden="true">🐄</span>
-                        <span>Nodo Sensor</span>
-                        <small>DS18B20 + AD8232</small>
-                    </div>
-                    <div class="arch__line" aria-hidden="true">
-                        <span class="arch__label">LoRa 433 MHz</span>
-                        <div class="arch__arrow"></div>
-                    </div>
-                    <div class="arch__node arch__node--gateway">
-                        <span aria-hidden="true">📡</span>
-                        <span>Gateway Receptor</span>
-                        <small>ESP32 LoRa V3</small>
-                    </div>
-                    <div class="arch__line" aria-hidden="true">
-                        <span class="arch__label">Bluetooth</span>
-                        <div class="arch__arrow"></div>
-                    </div>
-                    <div class="arch__node arch__node--device">
-                        <span aria-hidden="true">📱</span>
-                        <span>Dispositivo Vet</span>
-                        <small>Dashboard móvil</small>
+                <div class="seccion-arquitectura">
+                    <div class="container">
+                        <div class="glass" style="--r: -15;" data-text="Nodo Sensor">
+                            <span class="emoji">🐄</span>
+                            <p>DS18B20 + AD8232</p>
+                        </div>
+                        <div class="glass" style="--r: 0;" data-text="Gateway Receptor">
+                            <span class="emoji">📡</span>
+                            <p>ESP32 LoRa V3</p>
+                        </div>
+                        <div class="glass" style="--r: 15;" data-text="Dispositivo Vet">
+                            <span class="emoji">📱</span>
+                            <p>Dashboard móvil</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -669,7 +660,7 @@
                     Accede al panel de monitoreo para visualizar temperatura, BPM y humedad
                     del animal en tiempo real, con alertas visuales cuando se superan los umbrales clínicos.
                 </p>
-                <a href="./Login.html" class="btn btn--primary btn--xl btn-animado"
+                <a href="./Login.html" class="btn btn--primary btn--xl btn-principal"
                     aria-label="Iniciar sesión para acceder al monitoreo">
                     <span class="btn__dot btn__dot--lg" aria-hidden="true"></span>
                     Abrir Panel de Monitoreo
