@@ -800,7 +800,7 @@ strong {
 }
 
 .problem-card__title {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 600;
   color: var(--color-teal-dark);
   margin-bottom: 8px;
@@ -808,7 +808,7 @@ strong {
 }
 
 .problem-card__desc {
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.65;
   color: var(--color-text-dim);
 }
@@ -1017,7 +1017,7 @@ strong {
 
 .tech-card__name {
   font-family: var(--font-display);
-  font-size: 22px;
+  font-size: 25px;
   font-weight: 400;
   color: var(--color-teal-dark);
   line-height: 1.2;
@@ -1030,7 +1030,7 @@ strong {
 }
 
 .tech-card__desc {
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.65;
   color: var(--color-text);
   flex: 1;
@@ -1273,7 +1273,7 @@ strong {
 }
 
 .footer__desc {
-  font-size: 13px;
+  font-size: 15px;
   color: rgba(228, 221, 211, 0.7);
   line-height: 1.7;
 }
@@ -1281,7 +1281,7 @@ strong {
 .footer__meta {
   display: flex;
   gap: 24px;
-  font-size: 11px;
+  font-size: 13px;
   color: rgba(228, 221, 211, 0.5);
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -1515,14 +1515,14 @@ strong {
 }
 
 .whatis-card__title {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 600;
   color: var(--color-teal-dark);
   margin-bottom: 4px;
 }
 
 .whatis-card__desc {
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.65;
   color: var(--color-text-dim);
 }
@@ -1556,14 +1556,14 @@ strong {
 
 .audience-card__title {
   font-family: var(--font-display);
-  font-size: 20px;
+  font-size: 23px;
   font-weight: 400;
   color: var(--color-teal-dark);
   margin-bottom: 12px;
 }
 
 .audience-card__desc {
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.75;
   color: var(--color-text);
   margin-bottom: 20px;
@@ -1577,11 +1577,11 @@ strong {
 }
 
 .audience-card__list li {
-  font-size: 12px;
+  font-size: 14px;
   color: var(--color-text-dim);
   padding-left: 16px;
   position: relative;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 .audience-card__list li::before {
@@ -1623,14 +1623,14 @@ strong {
 }
 
 .diff-item__title {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   color: var(--color-teal-dark);
   margin-bottom: 8px;
 }
 
 .diff-item__desc {
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.65;
   color: var(--color-text-dim);
 }
