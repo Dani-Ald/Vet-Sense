@@ -14,6 +14,7 @@
         href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Space+Mono:wght@400;700&display=swap"
         rel="stylesheet" />
     <script type="module" src="./js/protect.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body class="mon-page">
@@ -123,6 +124,28 @@
                 </div>
             </div>
 
+            <!-- Gráfico Histórico BLE (tiempo real) -->
+            <div class="section__label" style="margin-top: 32px;">Historial BLE (Última Hora)</div>
+            <div class="chart-container" style="position: relative; height: 300px; width: 100%; margin-bottom: 24px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 16px;">
+                <canvas id="historyChart"></canvas>
+            </div>
+
+            <!-- Gráfico Histórico InfluxDB (últimas 24 h) -->
+            <div style="margin-top: 40px; margin-bottom: 8px;">
+                <div class="section__label">Historial InfluxDB</div>
+                <h3 style="
+                    font-family: 'DM Sans', sans-serif;
+                    font-size: 1.25rem;
+                    font-weight: 600;
+                    color: rgba(255,255,255,0.92);
+                    margin: 6px 0 20px;
+                    letter-spacing: -0.01em;
+                ">Historial de Frecuencia Cardíaca</h3>
+            </div>
+            <div class="chart-container" style="position: relative; height: 320px; width: 100%; margin-bottom: 32px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 16px;">
+                <canvas id="graficaHistorico"></canvas>
+            </div>
+
             <!-- Log BLE -->
             <details class="log-panel">
                 <summary>▸ LOG BLE</summary>
@@ -133,6 +156,38 @@
     </main>
 
     <div id="toast"></div>
+
+    <!-- InfluxDB Client SDK vía CDN -->
+    <script type="module">
+        import { InfluxDB, Point } from 'https://unpkg.com/@influxdata/influxdb-client-browser/dist/index.browser.mjs';
+        
+        // Se expone globalmente para ser usado por el script principal de monitoreo
+        window.InfluxDB = InfluxDB;
+        window.Point = Point;
+        console.log("InfluxDB Client SDK importado correctamente:", !!InfluxDB);
+    </script>
+
+    <!-- Carga del Gráfico InfluxDB:
+         1) Cuando el usuario ya está autenticado (onAuthStateChanged)
+         2) Como fallback: automáticamente al cargar la página (DOMContentLoaded)  -->
+    <script type="module">
+        import { auth } from './js/firebase-config.js';
+        import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/12.12.1/firebase-auth.js';
+        import { cargarHistorico } from './js/monitoreo-chart.js';
+
+        // Llamada automática al entrar a la página
+        window.addEventListener('DOMContentLoaded', () => {
+            cargarHistorico();
+        });
+
+        // También se recarga si el usuario se autentica después
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                console.log('[VetSense] Usuario autenticado — recargando historial InfluxDB...');
+                cargarHistorico();
+            }
+        });
+    </script>
 
     <script>
         const ANIMALES = [
